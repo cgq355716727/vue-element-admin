@@ -1,10 +1,13 @@
 <template>
   <div class="app-wrapper" :class="classObj">
+    <div class="navbar-container">
+      <navbar></navbar>
+      <tags-view></tags-view>
+      </div> 
+    
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"></div>
     <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">
-      <navbar></navbar>
-      <tags-view></tags-view>
       <app-main></app-main>
     </div>
   </div>
@@ -33,7 +36,6 @@ export default {
     classObj() {
       return {
         hideSidebar: !this.sidebar.opened,
-        openSidebar: this.sidebar.opened,
         withoutAnimation: this.sidebar.withoutAnimation,
         mobile: this.device === 'mobile'
       }
@@ -54,10 +56,6 @@ export default {
     position: relative;
     height: 100%;
     width: 100%;
-    &.mobile.openSidebar{
-      position: fixed;
-      top: 0;
-    }
   }
   .drawer-bg {
     background: #000;
@@ -67,5 +65,38 @@ export default {
     height: 100%;
     position: absolute;
     z-index: 999;
+  }
+// ---开始自定义
+.main-container{
+  padding-top: 85px;
+}
+  .navbar-container{
+    width: 100%;
+    position: fixed;
+    // padding-left: 36px;
+    // padding-left: 180px;
+    z-index: 1;
+  }
+
+.hideSidebar .navbar-container{
+
+    padding-left: 0px;
+
+  }
+  
+  .mobile .navbar-container{
+
+    padding-left: 0px;
+
+  }
+  .tags-view-container{
+  padding-left:180px;
+}
+  .hideSidebar .tags-view-container{
+  padding-left:36px;
+}
+  #app .sidebar-container{
+    // padding-top: 50px;
+    top:50px;
   }
 </style>

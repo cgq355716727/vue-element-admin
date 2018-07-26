@@ -1,5 +1,17 @@
 <template>
   <el-menu class="navbar" mode="horizontal">
+      <!-- <div class="logo">
+        <a href="#/">
+          <img class="expanded" src="/src/assets/logo-full.svg" style="max-height:40px;" alt="Alain">
+          <img class="collapsed" src="/src/assets/logo.svg" style="max-height:30px;" alt="Alain">
+        </a>
+      </div> -->
+      <a href="index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <div class="logo-mini"></div>
+      <!-- logo for regular state and mobile devices -->
+      <div class="logo-lg"></div>
+      </a>
     <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
 
     <breadcrumb class="breadcrumb-container"></breadcrumb>
@@ -81,10 +93,41 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+  .logo-mini{
+    display: none;
+    background: url(/build/logo.png) no-repeat center;
+    background-size:25px 25px;
+    height: 50px;
+}
+.logo-lg{
+    background: url(/build/logo.png) no-repeat center;
+    background-size:40px 40px;
+    height: 50px;
+    
+}
+
+
+.hideSidebar .logo .logo-lg{
+    display: none;
+}
+.hideSidebar .logo .logo-mini{
+  display:block;
+}
+.logo {
+  width: 180px;
+}
+.hideSidebar .logo {
+  width: 36px;;
+}
 .navbar {
   height: 50px;
   line-height: 50px;
   border-radius: 0px !important;
+  .logo {
+      float: left;
+      max-height: 50px;
+      box-shadow: -1px 1px 4px #888888;
+  }
   .hamburger-container {
     line-height: 58px;
     height: 50px;
@@ -138,5 +181,6 @@ export default {
       }
     }
   }
+
 }
 </style>
